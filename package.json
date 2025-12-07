@@ -1,0 +1,74 @@
+{
+  "name": "chainreconvenant",
+  "version": "1.0.0",
+  "description": "Create and execute legal-style agreements on-chain with automated enforcement of terms",
+  "main": "index.js",
+  "scripts": {
+    "compile": "hardhat compile",
+    "test": "hardhat test",
+    "test:coverage": "hardhat coverage",
+    "test:gas": "REPORT_GAS=true hardhat test",
+    "deploy:localhost": "hardhat run scripts/deploy.js --network localhost",
+    "deploy:sepolia": "hardhat run scripts/deploy.js --network sepolia",
+    "deploy:goerli": "hardhat run scripts/deploy.js --network goerli",
+    "deploy:mainnet": "hardhat run scripts/deploy.js --network ethereum",
+    "verify": "hardhat verify",
+    "node": "hardhat node",
+    "clean": "hardhat clean",
+    "format": "prettier --write 'contract/**/*.sol' 'test/**/*.js' 'scripts/**/*.js'",
+    "lint": "solhint 'contract/**/*.sol'",
+    "lint:fix": "solhint 'contract/**/*.sol' --fix"
+  },
+  "keywords": [
+    "ethereum",
+    "solidity",
+    "smart-contract",
+    "blockchain",
+    "covenant",
+    "legal-agreement",
+    "automated-enforcement",
+    "web3",
+    "defi",
+    "dapp"
+  ],
+  "author": "ChainReCovenant Team",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Gbangbolaoluwagbemiga/chainreconvenant.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Gbangbolaoluwagbemiga/chainreconvenant/issues"
+  },
+  "homepage": "https://github.com/Gbangbolaoluwagbemiga/chainreconvenant#readme",
+  "devDependencies": {
+    "@nomicfoundation/hardhat-chai-matchers": "^2.0.0",
+    "@nomicfoundation/hardhat-ethers": "^3.0.0",
+    "@nomicfoundation/hardhat-network-helpers": "^1.0.0",
+    "@nomicfoundation/hardhat-toolbox": "^4.0.0",
+    "@nomicfoundation/hardhat-verify": "^2.0.0",
+    "@typechain/ethers-v6": "^0.5.0",
+    "@typechain/hardhat": "^9.0.0",
+    "@types/chai": "^4.3.0",
+    "@types/mocha": "^10.0.0",
+    "@types/node": "^20.0.0",
+    "chai": "^4.3.0",
+    "ethers": "^6.9.0",
+    "hardhat": "^2.19.0",
+    "hardhat-gas-reporter": "^1.0.0",
+    "prettier": "^3.1.0",
+    "prettier-plugin-solidity": "^1.2.0",
+    "solhint": "^4.0.0",
+    "solidity-coverage": "^0.8.0",
+    "typechain": "^8.3.0",
+    "typescript": "^5.3.0"
+  },
+  "dependencies": {
+    "dotenv": "^16.3.0"
+  },
+  "engines": {
+    "node": ">=16.0.0",
+    "npm": ">=8.0.0"
+  }
+}
+
