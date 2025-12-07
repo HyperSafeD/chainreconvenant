@@ -2,6 +2,19 @@
 
 **Create and execute legal-style agreements on-chain with automated enforcement of terms**
 
+## 🚀 Deployed on Base Mainnet
+
+**Status**: ✅ Live & Verified
+
+| Contract | Address | Explorer |
+|----------|---------|----------|
+| **ChainReCovenant** | `0x3A8527E43beC82415bF8A1C1aa0b072F7b49c24f` | [View on BaseScan](https://basescan.org/address/0x3A8527E43beC82415bF8A1C1aa0b072F7b49c24f#code) |
+| **CovenantFactory** | `0x000811CA5CdfB8CeDAd90E399252c8216f70b6D7` | [View on BaseScan](https://basescan.org/address/0x000811CA5CdfB8CeDAd90E399252c8216f70b6D7#code) |
+
+- **Network**: Base (Chain ID: 8453)
+- **Verification**: ✅ Source code verified on BaseScan
+- **Deployment Date**: December 7, 2025
+
 ## Overview
 
 ChainReCovenant is a comprehensive Solidity smart contract that enables parties to create binding, legally-styled agreements on the blockchain with automated term enforcement. This contract provides a trustless framework for multi-party agreements with built-in dispute resolution and penalty enforcement mechanisms.

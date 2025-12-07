@@ -3,6 +3,7 @@ node_modules/
 package-lock.json
 yarn.lock
 
+
 # Hardhat
 cache/
 artifacts/
@@ -46,6 +47,7 @@ yarn-error.log*
 dist/
 build/
 out/
+.next/
 
 # Temporary files
 tmp/
