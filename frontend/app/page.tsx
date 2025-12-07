@@ -1,207 +1,65 @@
-'use client';
-
-import { useAppKit } from '@reown/appkit/react';
-import { useAccount, useReadContract } from 'wagmi';
-import { CONTRACT_ADDRESSES } from '@/config/contracts';
-import { CHAINRECOVENANT_ABI } from '@/config/abi';
-import Link from 'next/link';
+import Image from "next/image";
 
 export default function Home() {
-  const { open } = useAppKit();
-  const { address, isConnected } = useAccount();
-
-  // Read total agreements from contract
-  const { data: totalAgreements } = useReadContract({
-    address: CONTRACT_ADDRESSES.ChainReCovenant as `0x${string}`,
-    abi: CHAINRECOVENANT_ABI,
-    functionName: 'getTotalAgreements',
-  });
-
-  // Read user agreements if connected
-  const { data: userAgreements } = useReadContract({
-    address: CONTRACT_ADDRESSES.ChainReCovenant as `0x${string}`,
-    abi: CHAINRECOVENANT_ABI,
-    functionName: 'getUserAgreements',
-    args: address ? [address] : undefined,
-    query: {
-      enabled: !!address,
-    },
-  });
-
   return (
-    <div className="min-h-screen bg-gradient-to-b from-blue-50 to-white">
-      {/* Header */}
-      <header className="border-b bg-white/80 backdrop-blur-sm sticky top-0 z-50">
-        <div className="container mx-auto px-4 py-4 flex justify-between items-center">
-          <div className="flex items-center gap-2">
-            <span className="text-2xl">📜</span>
-            <h1 className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-              ChainReCovenant
-            </h1>
-          </div>
-          <button
-            onClick={() => open()}
-            className="px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors font-medium"
-          >
-            {isConnected ? 'Connected' : 'Connect Wallet'}
-          </button>
-        </div>
-      </header>
-
-      {/* Hero Section */}
-      <section className="container mx-auto px-4 py-20 text-center">
-        <h2 className="text-5xl font-bold mb-6 bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent">
-          Legal Agreements on the Blockchain
-        </h2>
-        <p className="text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
-          Create, sign, and enforce legal-style agreements with automated term enforcement.
-          Trustless, transparent, and immutable.
-        </p>
-        
-        <div className="flex gap-4 justify-center">
-          {isConnected ? (
-            <>
-              <Link
-                href="/create"
-                className="px-8 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors font-medium text-lg"
-              >
-                Create Agreement
-              </Link>
-              <Link
-                href="/agreements"
-                className="px-8 py-3 border-2 border-blue-600 text-blue-600 rounded-lg hover:bg-blue-50 transition-colors font-medium text-lg"
-              >
-                View My Agreements
-              </Link>
-            </>
-          ) : (
-            <button
-              onClick={() => open()}
-              className="px-8 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors font-medium text-lg"
+    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
+      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
+        <Image
+          className="dark:invert"
+          src="/next.svg"
+          alt="Next.js logo"
+          width={100}
+          height={20}
+          priority
+        />
+        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
+          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
+            To get started, edit the page.tsx file.
+          </h1>
+          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
+            Looking for a starting point or more instructions? Head over to{" "}
+            <a
+              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
+              className="font-medium text-zinc-950 dark:text-zinc-50"
             >
-              Connect Wallet to Start
-            </button>
-          )}
+              Templates
+            </a>{" "}
+            or the{" "}
+            <a
+              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
+              className="font-medium text-zinc-950 dark:text-zinc-50"
+            >
+              Learning
+            </a>{" "}
+            center.
+          </p>
         </div>
-      </section>
-
-      {/* Stats Section */}
-      <section className="container mx-auto px-4 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          <div className="bg-white p-8 rounded-xl shadow-sm border border-gray-100">
-            <div className="text-4xl mb-2">⚡</div>
-            <div className="text-3xl font-bold text-blue-600 mb-2">
-              {totalAgreements?.toString() || '0'}
-            </div>
-            <div className="text-gray-600">Total Agreements</div>
-          </div>
-
-          <div className="bg-white p-8 rounded-xl shadow-sm border border-gray-100">
-            <div className="text-4xl mb-2">🤝</div>
-            <div className="text-3xl font-bold text-purple-600 mb-2">
-              {isConnected ? (userAgreements?.length.toString() || '0') : '0'}
-            </div>
-            <div className="text-gray-600">Your Agreements</div>
-          </div>
-
-          <div className="bg-white p-8 rounded-xl shadow-sm border border-gray-100">
-            <div className="text-4xl mb-2">✅</div>
-            <div className="text-3xl font-bold text-green-600 mb-2">
-              Base
-            </div>
-            <div className="text-gray-600">Deployed on Base</div>
-          </div>
+        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
+          <a
+            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
+            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <Image
+              className="dark:invert"
+              src="/vercel.svg"
+              alt="Vercel logomark"
+              width={16}
+              height={16}
+            />
+            Deploy Now
+          </a>
+          <a
+            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
+            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Documentation
+          </a>
         </div>
-      </section>
-
-      {/* Features */}
-      <section className="container mx-auto px-4 py-20">
-        <h3 className="text-3xl font-bold text-center mb-12">Key Features</h3>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          <FeatureCard
-            icon="🔐"
-            title="Multi-Party Agreements"
-            description="Create agreements with 2 or more parties. All parties must sign before activation."
-          />
-          <FeatureCard
-            icon="⚖️"
-            title="Automated Enforcement"
-            description="Terms are automatically enforced on-chain with built-in penalty mechanisms."
-          />
-          <FeatureCard
-            icon="💰"
-            title="Collateral Management"
-            description="Optional collateral deposits with automatic withdrawal after completion."
-          />
-          <FeatureCard
-            icon="📅"
-            title="Deadline Monitoring"
-            description="Set deadlines for terms with automatic breach detection."
-          />
-          <FeatureCard
-            icon="🎯"
-            title="Dispute Resolution"
-            description="Built-in dispute mechanism for handling disagreements."
-          />
-          <FeatureCard
-            icon="🔍"
-            title="Fully Transparent"
-            description="All agreements and terms are visible on-chain and verified on BaseScan."
-          />
-        </div>
-      </section>
-
-      {/* Contract Info */}
-      <section className="container mx-auto px-4 py-12 mb-20">
-        <div className="bg-gradient-to-r from-blue-600 to-purple-600 rounded-2xl p-8 text-white">
-          <h3 className="text-2xl font-bold mb-4">Deployed on Base Mainnet</h3>
-          <div className="space-y-2">
-            <div className="flex items-center gap-2 flex-wrap">
-              <span className="font-semibold">ChainReCovenant:</span>
-              <code className="bg-white/20 px-3 py-1 rounded text-sm">
-                {CONTRACT_ADDRESSES.ChainReCovenant}
-              </code>
-              <a
-                href={`https://basescan.org/address/${CONTRACT_ADDRESSES.ChainReCovenant}#code`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-blue-200 hover:text-white underline text-sm"
-              >
-                View on BaseScan ↗
-              </a>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Footer */}
-      <footer className="border-t bg-white/80 backdrop-blur-sm">
-        <div className="container mx-auto px-4 py-8 text-center text-gray-600">
-          <p>Built with ❤️ for trustless, automated legal agreements on-chain</p>
-          <div className="mt-4 flex gap-6 justify-center">
-            <a href="https://basescan.org" target="_blank" rel="noopener noreferrer" className="hover:text-blue-600">
-              BaseScan
-            </a>
-            <a href="https://base.org" target="_blank" rel="noopener noreferrer" className="hover:text-blue-600">
-              Base Network
-            </a>
-            <a href="https://github.com/Gbangbolaoluwagbemiga/chainreconvenant" target="_blank" rel="noopener noreferrer" className="hover:text-blue-600">
-              GitHub
-            </a>
-          </div>
-        </div>
-      </footer>
+      </main>
     </div>
   );
 }
-
-function FeatureCard({ icon, title, description }: { icon: string; title: string; description: string }) {
-  return (
-    <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
-      <div className="text-4xl mb-4">{icon}</div>
-      <h4 className="text-xl font-bold mb-2">{title}</h4>
-      <p className="text-gray-600">{description}</p>
-    </div>
-  );
-}
-
