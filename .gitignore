@@ -15,10 +15,14 @@ coverage.json
 .coverage_artifacts/
 .coverage_cache/
 
-# Environment variables
+# Environment variables - NEVER commit these!
 .env
+.env.*
 .env.local
 .env.*.local
+env.example
+.env.example
+*env.example*
 
 # IDE
 .vscode/
