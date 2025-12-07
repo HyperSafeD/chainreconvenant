@@ -10,8 +10,8 @@ async function main() {
   
   // Get deployer
   const [deployer] = await hre.ethers.getSigners();
-  const deployerAddress = await deployer.getAddress();
-  const balance = await hre.ethers.provider.getBalance(deployerAddress);
+  const deployerAddress = deployer ? await deployer.getAddress() : "Unknown";
+  const balance = deployer ? await hre.ethers.provider.getBalance(deployerAddress) : 0;
   
   console.log("👤 Deployer:", deployerAddress);
   console.log("💰 Balance:", hre.ethers.formatEther(balance), "ETH");
